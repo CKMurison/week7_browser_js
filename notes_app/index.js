@@ -9,3 +9,4 @@ console.log(model.getNotes());
 
 const view = new notesView();
 view.displayItems(['This item should be displayed', 'This one too'])
+
