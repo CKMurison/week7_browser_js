@@ -16,4 +16,17 @@ describe('MessageView', () => {
 
     expect(document.querySelector('#message')).not.toBeNull();
   });
+  it('removes an element after the click for cleanings button is clicked', () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+
+    const view = new MessageView();
+    
+    const buttonEl = document.querySelector('#show-message-button');
+    buttonEl.click();
+
+    const buttonElRemover = document.querySelector('#hide-message-button');
+    buttonElRemover.click();
+   
+    expect(document.querySelector('#message')).toBeNull();
+  });
 });

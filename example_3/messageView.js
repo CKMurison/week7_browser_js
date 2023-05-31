@@ -5,6 +5,11 @@ class MessageView {
     this.buttonEl.addEventListener('click', () => {
        this.displayMessage();
     });
+    this.buttonElRemover = document.querySelector('#hide-message-button');
+
+    this.buttonElRemover.addEventListener('click', () => {
+      this.hideMessage();
+    });
   }
 
   displayMessage() {
@@ -13,6 +18,11 @@ class MessageView {
     newElement.innerText = 'This message is displayed by Javascript';
     document.querySelector('#main-container').append(newElement);
   }
-}
+  
+  hideMessage() {
+    const newElement = document.querySelector('div#message');
+    newElement.remove();
+  };
+};
 
 module.exports = MessageView;
