@@ -11,6 +11,8 @@ class GithubView {
 
       this.client.getRepoInfo(repoName, repoData => {
         console.log(repoData);
+        this.model.setRepoInfo(repoData);
+        this.display();
       });
     });
   }
@@ -19,7 +21,12 @@ class GithubView {
     const repoNameElement = document.querySelector('#repo-name');
     const repoDescription = document.querySelector('#repo-description');
     const repoImage = document.querySelector('#repo-image');
-  }
-}
+
+    const repoInfo = this.model.getRepoInfo();
+    repoNameElement.append(repoInfo.full_name);
+    repoDescription.append(repoInfo.description);
+    // repoImage.src = repoData.organization.avatar_url;
+  };
+};
 
 module.exports = GithubView;

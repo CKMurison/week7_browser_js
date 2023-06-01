@@ -48,6 +48,8 @@
             const repoName = repoInputEl.value;
             this.client.getRepoInfo(repoName, (repoData) => {
               console.log(repoData);
+              this.model.setRepoInfo(repoData);
+              this.display();
             });
           });
         }
@@ -55,6 +57,9 @@
           const repoNameElement = document.querySelector("#repo-name");
           const repoDescription = document.querySelector("#repo-description");
           const repoImage = document.querySelector("#repo-image");
+          const repoInfo = this.model.getRepoInfo();
+          repoNameElement.append(repoInfo.full_name);
+          repoDescription.append(repoInfo.description);
         }
       };
       module.exports = GithubView2;
