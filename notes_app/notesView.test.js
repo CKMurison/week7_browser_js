@@ -16,6 +16,7 @@ describe('notesModel view', () => {
 
     note.displayNotes(['This is a test Note item!']);
     const notesItemElement = document.querySelectorAll('div.notes-item');
+    
     expect(notesItemElement.length).toBe(1);
     expect(notesItemElement[0].innerText).toBe('This is a test Note item!');
   });
@@ -35,5 +36,20 @@ describe('notesModel view', () => {
     // 3. The note should be on the page
     expect(document.querySelectorAll('div.notes-item').length).toEqual(1);
     expect(document.querySelectorAll('div.notes-item')[0].innerText).toEqual('My new amazing test note');
+  });
+  it('Clears the list of previous notes before adding another', () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+
+    const model = new notesModel();
+    const view = new notesView(model);
+    
+    model.addNote('Hi');
+    model.addNote('Hey!');
+        
+    view.displayNotes();
+    view.clearNotes();
+    view.displayNotes();
+    
+    expect(document.querySelectorAll('div.notes-item').length).toEqual(2);
   });
 });

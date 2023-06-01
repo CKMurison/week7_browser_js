@@ -15,14 +15,21 @@ class notesView {
     }
 
    displayNotes() {
-     this.model.getNotes().forEach((noteItem) => {
-     const newElement = document.createElement('div');
-     newElement.className = 'notes-item';
-     newElement.innerText = noteItem
 
-     document.querySelector('#main-container').append(newElement);
+      this.model.getNotes().forEach((noteItem) => {
+      const newElement = document.createElement('div');
+      newElement.className = 'notes-item';
+      newElement.innerText = noteItem
+
+      document.querySelector('#main-container').append(newElement);
     });
    };
+
+   clearNotes() {
+      document.querySelectorAll('.notes-item').forEach(element => {
+        element.remove();
+      });
+    }
 };
 
 module.exports = notesView;

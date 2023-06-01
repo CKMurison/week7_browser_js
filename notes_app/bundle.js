@@ -28,6 +28,11 @@
             document.querySelector("#main-container").append(newElement);
           });
         }
+        clearNotes() {
+          document.querySelectorAll(".notes-item").forEach((element) => {
+            element.remove();
+          });
+        }
       };
       module.exports = notesView2;
     }
@@ -59,8 +64,6 @@
   var notesView = require_notesView();
   var notesModel = require_notesModel();
   var model = new notesModel();
-  model.addNote("This is a test note");
-  console.log(model.getNotes());
-  var view = new notesView();
-  view.displayItems(["This item should be displayed", "This one too"]);
+  var view = new notesView(model);
+  view.displayNotes(["This item should be displayed", "This one too"]);
 })();
