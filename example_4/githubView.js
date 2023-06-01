@@ -16,7 +16,9 @@ class GithubView {
   }
 
   display() {
-
+    const repoNameElement = document.querySelector('#repo-name');
+    const repoDescription = document.querySelector('#repo-description');
+    const repoImage = document.querySelector('#repo-image');
   }
 }
 
