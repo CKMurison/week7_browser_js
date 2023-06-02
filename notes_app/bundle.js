@@ -20,6 +20,7 @@
           if (document.querySelector(".notes-item")) {
             this.clearNotes();
           }
+          document.querySelector("#add-note-input").value = "";
           this.model.addNote(newNote);
           this.displayNotes();
         }
