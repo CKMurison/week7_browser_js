@@ -6,13 +6,12 @@ describe('notesClient', () => {
   it('calls a fetch and loads the notes', (done) => {
   const client = new notesClient();
   fetch.mockResponseOnce(JSON.stringify({
-    name: 'notes',
-    description: 'Notes from the notes app'
+    notes: ['note']
     }));
 
-    client.loadNotes('notes', (getNotes) => {
-      expect(loadNotes.description).toBe('Notes from the notes app')
-
+    client.loadNotes((returnedData) => {
+      expect(returnedData.notes).toEqual(['note']);
+  
       done();
     });
   });
