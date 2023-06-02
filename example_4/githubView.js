@@ -20,12 +20,12 @@ class GithubView {
   display() {
     const repoNameElement = document.querySelector('#repo-name');
     const repoDescription = document.querySelector('#repo-description');
-    const repoImage = document.querySelector('#repo-image');
+    const repoImage = document.getElementById('repo-image');
 
     const repoInfo = this.model.getRepoInfo();
     repoNameElement.innerText = repoInfo.full_name;
     repoDescription.innerText = repoInfo.description;
-    repoImage.src = repoData.organization.avatar_url;
+    repoImage.src = repoInfo.organization.avatar_url;
   };
 };
 

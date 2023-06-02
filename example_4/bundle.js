@@ -46,9 +46,9 @@
           const repoInputEl = document.querySelector("#repo-name-input");
           submitButtonEl.addEventListener("click", () => {
             const repoName = repoInputEl.value;
-            this.client.getRepoInfo(repoName, (repoData2) => {
-              console.log(repoData2);
-              this.model.setRepoInfo(repoData2);
+            this.client.getRepoInfo(repoName, (repoData) => {
+              console.log(repoData);
+              this.model.setRepoInfo(repoData);
               this.display();
             });
           });
@@ -56,11 +56,11 @@
         display() {
           const repoNameElement = document.querySelector("#repo-name");
           const repoDescription = document.querySelector("#repo-description");
-          const repoImage = document.querySelector("#repo-image");
+          const repoImage = document.getElementById("repo-image");
           const repoInfo = this.model.getRepoInfo();
           repoNameElement.innerText = repoInfo.full_name;
           repoDescription.innerText = repoInfo.description;
-          repoImage.src = repoData.organization.avatar_url;
+          repoImage.src = repoInfo.organization.avatar_url;
         }
       };
       module.exports = GithubView2;
