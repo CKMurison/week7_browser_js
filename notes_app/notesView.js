@@ -10,6 +10,9 @@ class notesView {
     }
   
    addNewNote(newNote) {
+      if(document.querySelector('.notes-item')) {
+      this.clearNotes(); 
+      }
       this.model.addNote(newNote);
       this.displayNotes();
     }
