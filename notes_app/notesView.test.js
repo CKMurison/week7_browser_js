@@ -4,6 +4,7 @@
 
 const notesView = require('./notesView');
 const notesModel = require('./notesModel');
+const notesClient = require('./notesClient')
 const fs = require('fs');
 
 describe('notesModel view', () => {
@@ -51,5 +52,17 @@ describe('notesModel view', () => {
     view.displayNotes();
     
     expect(document.querySelectorAll('div.notes-item').length).toEqual(2);
+  });
+   it('displayes the note from the API', () => {
+    const model = new notesModel();
+    const client = new notesClient();
+    const notes = new notesView(model, client);
+
+    client.loadNotes((callback) => {
+      callback(['note 1'])
+    });
+    
+    notes.displayNotesFromApi()
+    expect(document.querySelectorAll('div.note').length).toEqual(1)
   });
 });
